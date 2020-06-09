@@ -9,7 +9,7 @@ const AuthContext = createContext(initialValues);
 const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }: any) => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
 
   return (
     <Provider value={{ authenticated, setAuthenticated }}>{children}</Provider>

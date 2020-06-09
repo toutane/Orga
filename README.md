@@ -6,13 +6,17 @@
 
 1. Implement React Navigation
 
-- Basic in app navigation -> isSignIn or not
-- Add Auth (SignIn, SignUp) and App (Home, Account, Settings) stack navigators
+[x] Basic in app navigation -> isSignIn or not
+[x] Add Auth (SignIn, SignUp) and App (Home, Account, Settings) stack navigators
 
-2. Implement React Native Firebase
+2. Implement Firebase JS SDK
 
-- Firebase project
+[x] Create Firebase console project
+[x] Implement Firebase initialization
+
 - Authentication -> SignUp, SignIn, SignOut
 - Cloud Firestore
 
-3. Implement Expo font (loading font when app start)
+3. Implement Expo font
+
+[x] Implement loading font hooks
