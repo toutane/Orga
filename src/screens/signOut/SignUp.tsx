@@ -2,12 +2,18 @@ import React, { useContext } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
 import { AuthContext } from "../../contexts/AuthContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export default function SignUpScreen({ navigation }: any) {
   const { signUp } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext);
   return (
-    <View style={styles.container}>
-      <Text>Hello world from SignUpScreen</Text>
+    <View
+      style={[styles.container, { backgroundColor: theme.backgroundColor }]}
+    >
+      <Text style={{ color: theme.textColor }}>
+        Hello world from SignUpScreen
+      </Text>
       <Button
         title="Go to SignIn screen"
         onPress={() => navigation.navigate("SignIn")}
@@ -16,8 +22,8 @@ export default function SignUpScreen({ navigation }: any) {
         title="Sign Up!"
         onPress={() =>
           signUp({
-            username: "Toutane",
-            email: "ca@leger.email",
+            username: "Alexandra",
+            email: "alex@email.com",
             password: "azerty",
           })
         }
