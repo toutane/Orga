@@ -11,6 +11,14 @@ import {
   AuthProvider,
   initialAuthContextValues,
 } from "./src/contexts/AuthContext";
+import {
+  UserProvider,
+  initialUserContextValues,
+} from "./src/contexts/UserContext";
+import {
+  ThemeProvider,
+  initialThemeContextValues,
+} from "./src/contexts/ThemeContext";
 
 import Router from "./src/navigation/Router";
 
@@ -24,7 +32,11 @@ export default function App() {
     return (
       <AppProvider value={initialAppContextValues}>
         <AuthProvider value={initialAuthContextValues}>
-          <Router />
+          <UserProvider value={initialUserContextValues}>
+            <ThemeProvider value={initialThemeContextValues}>
+              <Router />
+            </ThemeProvider>
+          </UserProvider>
         </AuthProvider>
       </AppProvider>
     );

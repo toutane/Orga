@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
 import * as firebase from "firebase";
-import { firebaseConfig } from "../config/firebaseConfig";
 
 const initialAppContextValues = {
   authenticated: false,
@@ -11,11 +10,12 @@ const AppContext = createContext(initialAppContextValues);
 const { Provider } = AppContext;
 
 const AppProvider = ({ children }: any) => {
-  const [authenticated, setAuthenticated] = useState<boolean | any>(false);
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user), setAuthenticated(user);
+      //console.log(user);
+      user !== null ? setAuthenticated(true) : setAuthenticated(false);
     });
   }, []);
   return (

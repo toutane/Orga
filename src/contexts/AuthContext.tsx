@@ -39,13 +39,11 @@ const AuthProvider = ({ children }: any) => {
       .then(() =>
         dbh.collection("users").doc(firebase.auth().currentUser?.uid).set({
           uid: firebase.auth().currentUser?.uid,
+          name: username,
           username: username,
           email: email,
         })
       );
-    return firebase.auth().currentUser?.updateProfile({
-      displayName: username,
-    });
   };
 
   const signIn = async ({ email, password }: Credentials) => {

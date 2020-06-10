@@ -16,7 +16,7 @@ export default function Router() {
   return (
     <NavigationContainer>
       {authenticated ? (
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Home" headerMode="none">
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Account" component={AccountScreen} />
         </Stack.Navigator>
@@ -27,7 +27,7 @@ export default function Router() {
             component={SignInScreen}
             options={{
               title: "Sign In",
-              animationTypeForReplace: !authenticated ? "pop" : "push",
+              animationTypeForReplace: authenticated ? "pop" : "push",
             }}
           />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
