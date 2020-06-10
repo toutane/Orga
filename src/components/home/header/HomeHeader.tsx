@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   labelsView: { width: screenWidth - 135 },
   title: {
     fontFamily: "roboto-bold",
-    fontSize: 34,
+    fontSize: 33,
   },
-  subTitle: { fontFamily: "bentham-regular", fontSize: 22 },
+  subTitle: { fontFamily: "bentham-regular", fontSize: 20 },
 });
