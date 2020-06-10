@@ -22,6 +22,8 @@ export default function useCachedResources() {
           "roboto-regular": require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
           "roboto-thin": require("../../assets/fonts/Roboto/Roboto-Thin.ttf"),
           "bentham-regular": require("../../assets/fonts/Bentham/Bentham-Regular.ttf"),
+          //"ptserif-bold": require("../../assets/fonts/PT_Serif/PTSerif-Bold.ttf"),
+          //"ptserif-regular": require("../../assets/fonts/PT_Serif/PTSerif-Regular.ttf"),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
