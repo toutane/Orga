@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { AuthContext } from "../contexts/AuthContext";
+import { AppContext } from "../contexts/AppContext";
 
 import HomeScreen from "../screens/signIn/Home";
 import AccountScreen from "../screens/signIn/Account";
@@ -12,7 +12,7 @@ import SignUpScreen from "../screens/signOut/SignUp";
 const Stack = createStackNavigator();
 
 export default function Router() {
-  const { authenticated } = useContext(AuthContext);
+  const { authenticated } = useContext(AppContext);
   return (
     <NavigationContainer>
       {authenticated ? (
@@ -22,7 +22,14 @@ export default function Router() {
         </Stack.Navigator>
       ) : (
         <Stack.Navigator initialRouteName="SignIn">
-          <Stack.Screen name="SignIn" component={SignInScreen} />
+          <Stack.Screen
+            name="SignIn"
+            component={SignInScreen}
+            options={{
+              title: "Sign In",
+              animationTypeForReplace: !authenticated ? "pop" : "push",
+            }}
+          />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
         </Stack.Navigator>
       )}

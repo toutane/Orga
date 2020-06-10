@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Button } from "react-native";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function SignInScreen({ navigation }: any) {
-  const { setAuthenticated } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
   return (
     <View style={styles.container}>
       <Text>Hello world from SignInScreen</Text>
@@ -12,7 +12,10 @@ export default function SignInScreen({ navigation }: any) {
         title="Go to SignUp screen"
         onPress={() => navigation.navigate("SignUp")}
       />
-      <Button title="Sign In !" onPress={() => setAuthenticated(true)} />
+      <Button
+        title="Sign In !"
+        onPress={() => signIn({ email: "ca@leger.email", password: "azerty" })}
+      />
     </View>
   );
 }

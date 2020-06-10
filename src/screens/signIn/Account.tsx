@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Button } from "react-native";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function AccountScreen({ navigation }: any) {
-  const { setAuthenticated } = useContext(AuthContext);
+  const { signOut } = useContext(AuthContext);
   return (
     <View style={styles.container}>
       <Text>Hello world from AccountScreen</Text>
@@ -12,7 +12,7 @@ export default function AccountScreen({ navigation }: any) {
         title="Go to Account screen"
         onPress={() => navigation.goBack()}
       />
-      <Button title="Sign Out" onPress={() => setAuthenticated(false)} />
+      <Button title="Sign Out" onPress={() => signOut()} />
     </View>
   );
 }

@@ -13,7 +13,6 @@
 
 - [x] Create Firebase console project
 - [x] Implement Firebase initialization
-
 - [ ] Authentication -> SignUp, SignIn, SignOut
 - [ ] Cloud Firestore
 
