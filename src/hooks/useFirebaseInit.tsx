@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import firebase from "firebase";
 import * as SplashScreen from "expo-splash-screen";
 
-import { firebaseConfig } from "../config/firebaseConfig";
+import firebase from "../firebase/Firebase";
 
 export default function useFirebaseInit() {
   const [isFirebaseInitialized, setInitialized] = useState<boolean | any>(
@@ -14,21 +13,10 @@ export default function useFirebaseInit() {
   // ]);
 
   useEffect(() => {
-    checkIfInitialized();
+    firebase.isInitialized().then((val) => {
+      setInitialized(true);
+    });
   }, []);
-
-  // Check if firebase is initialize, if not: initialize it
-  const checkIfInitialized = async () => {
-    SplashScreen.preventAutoHideAsync();
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-      setInitialized(true);
-      SplashScreen.hideAsync();
-    } else {
-      setInitialized(true);
-      SplashScreen.hideAsync();
-    }
-  };
 
   return isFirebaseInitialized;
 }
