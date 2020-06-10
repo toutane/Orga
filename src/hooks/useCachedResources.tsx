@@ -15,7 +15,13 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Feather.font,
-          //"space-mono": require("../assets/fonts/SpaceMono-Regular.ttf"),
+          "roboto-black": require("../../assets/fonts/Roboto/Roboto-Black.ttf"),
+          "roboto-bold": require("../../assets/fonts/Roboto/Roboto-Bold.ttf"),
+          "roboto-light": require("../../assets/fonts/Roboto/Roboto-Light.ttf"),
+          "roboto-medium": require("../../assets/fonts/Roboto/Roboto-Medium.ttf"),
+          "roboto-regular": require("../../assets/fonts/Roboto/Roboto-Regular.ttf"),
+          "roboto-thin": require("../../assets/fonts/Roboto/Roboto-Thin.ttf"),
+          "bentham-regular": require("../../assets/fonts/Bentham/Bentham-Regular.ttf"),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
