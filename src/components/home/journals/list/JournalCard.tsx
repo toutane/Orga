@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Animated, View, Dimensions, StyleSheet } from "react-native";
 import Card, { CARD_WIDTH as DEFAULT_CARD_WIDTH, CARD_HEIGHT } from "./Card";
-import { journals } from "./JournalsFlatList";
+import { UserContext } from "../../../../contexts/UserContext";
 
 export const MARGIN = 20;
 export const CARD_WIDTH = DEFAULT_CARD_WIDTH + MARGIN * 2;
@@ -12,6 +12,14 @@ const styles = StyleSheet.create({
   card: {
     marginHorizontal: MARGIN,
     marginBottom: 15,
+  },
+  back: {
+    position: "absolute",
+    height: CARD_HEIGHT,
+    width: DEFAULT_CARD_WIDTH,
+    borderTopRightRadius: 25,
+    borderBottomRightRadius: 25,
+    backgroundColor: "black",
   },
   border: {
     zIndex: 1,
@@ -35,10 +43,11 @@ const styles = StyleSheet.create({
 interface WalletCardProps {
   x: Animated.Value;
   index: number;
-  item: { color: string };
+  item: { color: string; id: string; title: string; createAt: string };
 }
 
 const WalletCard = ({ item, x, index }: WalletCardProps) => {
+  const { userJournals } = useContext(UserContext);
   const position = Animated.subtract(index * CARD_WIDTH, x);
   const isDisappearing = -CARD_WIDTH;
   const isTop = 0;
@@ -76,11 +85,12 @@ const WalletCard = ({ item, x, index }: WalletCardProps) => {
           //opacity,
           transform: [{ translateX }, { scale }],
           marginLeft: index === 0 ? 30 : 20,
-          marginRight: index === journals.length - 1 ? 30 : 20,
+          marginRight: index === userJournals.length - 1 ? 30 : 20,
         },
       ]}
       key={index}
     >
+      <View style={styles.back} />
       <View style={styles.border} />
       <Animated.View style={[styles.shadow, { opacity }]} />
       <Card {...item} />

@@ -1,5 +1,6 @@
 import React from "react";
 import { Dimensions, View, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const { width } = Dimensions.get("window");
 const ratio = 400 / 270;
@@ -15,9 +16,16 @@ const styles = StyleSheet.create({
 });
 
 interface CardProps {
+  id: string;
   color: string;
 }
 
-export default ({ color }: CardProps) => {
-  return <View style={[styles.card, { backgroundColor: color }]} />;
+export default ({ color, id }: CardProps) => {
+  return (
+    <TouchableOpacity
+      style={[styles.card, { backgroundColor: color }]}
+      activeOpacity={0.8}
+      onPress={() => console.log("card pressed", id)}
+    />
+  );
 };

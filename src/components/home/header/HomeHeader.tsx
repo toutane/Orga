@@ -4,32 +4,25 @@ import { StyleSheet, View, Text } from "react-native";
 import { UserContext } from "../../../contexts/UserContext";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 
-import HomeAvatar from "./HomeAvatar";
+import { SettingsButton } from "./SettingsButton";
 import { screenWidth } from "../../../utils/dimensions";
 
-const moment = require("moment");
-
-export default function HomeHeader(props) {
+export const HomeHeader = (props) => {
   const { user } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
   return (
     <View style={styles.header}>
-      <View style={styles.labelsView}>
-        <Text
-          style={[styles.title, { color: theme.textColor }]}
-          adjustsFontSizeToFit
-          numberOfLines={1}
-        >
-          {`Hey ${user.name}`}
-        </Text>
-        <Text style={[styles.subTitle, { color: theme.textColor }]}>
-          {moment().format("dddd, MMMM, Do")}
-        </Text>
-      </View>
-      <HomeAvatar {...props} />
+      <Text
+        style={[styles.title, { color: theme.textColor }]}
+        adjustsFontSizeToFit
+        numberOfLines={1}
+      >
+        {`Hey ${user.name}`}
+      </Text>
+      <SettingsButton {...props} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   header: {
@@ -45,5 +38,4 @@ const styles = StyleSheet.create({
     fontFamily: "roboto-bold",
     fontSize: 33,
   },
-  subTitle: { fontFamily: "bentham-regular", fontSize: 20 },
 });
