@@ -19,3 +19,7 @@
 3. Implement Expo font
 
 - [x] Implement loading font hooks
+
+4. Create journals flat list animation
+
+- [ ] With reanimated and react native gesture
