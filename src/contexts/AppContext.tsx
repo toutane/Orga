@@ -3,7 +3,9 @@ import * as firebase from "firebase";
 
 const initialAppContextValues = {
   authenticated: false,
+  viewableItems: [],
   setAuthenticated: (state: boolean) => {},
+  setViewableItems: (items: any) => {},
 };
 
 const AppContext = createContext(initialAppContextValues);
@@ -14,12 +16,22 @@ const AppProvider = ({ children }: any) => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      //console.log(user);
       user !== null ? setAuthenticated(true) : setAuthenticated(false);
     });
   }, []);
+
+  const [viewableItems, setViewableItems] = useState([]);
   return (
-    <Provider value={{ authenticated, setAuthenticated }}>{children}</Provider>
+    <Provider
+      value={{
+        authenticated,
+        setAuthenticated,
+        viewableItems,
+        setViewableItems,
+      }}
+    >
+      {children}
+    </Provider>
   );
 };
 
