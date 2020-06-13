@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { StyleSheet, SafeAreaView, View, Text, Button } from "react-native";
-import HomeHeader from "../../components/home/header/HomeHeader";
+
 import { ThemeContext } from "../../contexts/ThemeContext";
+
+import { HomeHeader } from "../../components/home/header/HomeHeader";
+import { Journals } from "../../components/home/journals/Journals";
 
 export default function HomeScreen(props) {
   const { theme } = useContext(ThemeContext);
@@ -10,12 +13,7 @@ export default function HomeScreen(props) {
       style={[styles.safeArea, { backgroundColor: theme.backgroundColor }]}
     >
       <HomeHeader {...props} />
-      <View style={styles.view}>
-        <Button
-          title="Go to Account screen"
-          onPress={() => props.navigation.navigate("Account")}
-        />
-      </View>
+      <Journals />
     </SafeAreaView>
   );
 }
@@ -23,10 +21,5 @@ export default function HomeScreen(props) {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-  },
-  view: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 30,
   },
 });

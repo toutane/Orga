@@ -1,5 +1,5 @@
 export const light = {
   theme: "light",
-  backgroundColor: "white",
+  backgroundColor: "#F1EBCF",
   textColor: "black",
 };
